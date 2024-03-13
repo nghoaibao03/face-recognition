@@ -104,7 +104,7 @@ def main():
 
 
 
-                                if best_class_probabilities > 0.5:
+                                if best_class_probabilities > 0.7:
                                     cv2.rectangle(frame, (bb[i][0], bb[i][1]), (bb[i][2], bb[i][3]), (0, 255, 0), 2)
                                     text_x = bb[i][0]
                                     text_y = bb[i][3] + 20
@@ -116,9 +116,14 @@ def main():
                                                 cv2.FONT_HERSHEY_COMPLEX_SMALL,
                                                 1, (255, 255, 255), thickness=1, lineType=2)
                                     person_detected[best_name] += 1
-                                else:
+                                
+                                else :
                                     name = "Unknown"
-
+                                    cv2.rectangle(frame, (bb[i][0], bb[i][1]), (bb[i][2], bb[i][3]), (0, 255, 0), 2)
+                                    text_x = bb[i][0]
+                                    text_y = bb[i][3] + 20
+                                    cv2.putText(frame, name, (text_x, text_y), cv2.FONT_HERSHEY_COMPLEX_SMALL,
+                                                1, (255, 255, 255), thickness=1, lineType=2)
                 except:
                     pass
 
